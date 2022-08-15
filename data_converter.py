@@ -86,7 +86,7 @@ def save_volume_to_task_directory(cases:list,orgin_dir:str,task_dir:str,test_cou
 def convert(input: str, task_name: str,test_num:int = -1) -> None:
 
     #1.创建任务文件夹
-    work_dir = os.getenv('nnUNet_raw_data_base')
+    work_dir = os.getenv('nnUNet_raw_data_base') +"/nnUNet_raw_data"
     #work_dir = get_parent_dir(input)
     root_dir = os.path.join(work_dir, task_name)
     os.makedirs(os.path.join(root_dir, "imagesTr"), exist_ok=True)
@@ -136,7 +136,7 @@ def convert(input: str, task_name: str,test_num:int = -1) -> None:
     json_dict['numTraining'] = train_count
     json_dict['numTest'] = test_count
 
-    json_dict['training'] = [{'image': "imagesTr/%s" % i, "label": "labelsTr/%s" % i} for i in
+    json_dict['training'] = [{'image': "imagesTr/%s" % i, "label": "labelsTr/%s.label.nii.gz" % i[:-7]} for i in
                             dataset_train_files]
     json_dict['validation'] =  []
     json_dict['test'] = ["imagesTs/%s" %
