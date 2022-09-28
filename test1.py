@@ -132,3 +132,20 @@ print(dt) # 返回当前时间：2021:09:09 19:17:29
 # %%
 import shutil
 os.makedirs()
+#%%
+
+import numpy as np
+a = np.array([[1,3,5],[5,8,3],[3,1,2]])
+ 
+b = np.where(a == 1)
+b1 = np.argwhere(a == 1)
+print(b)
+print(b1)
+x, y = b
+
+# %%
+Xmin = np.array(x).min(axis=0)
+Xmax = np.array(x).max(axis=0)
+print(Xmin)
+print(Xmax)
+# %%
